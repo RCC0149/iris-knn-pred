@@ -15,13 +15,13 @@ Kubernetes: Deployed locally using Minikube with a LoadBalancer service.
 
 HTML Interface: Allows typing numerical inputs (1–2 decimal places) with range validation for Iris dataset features:
 
-  Sepal Length: 4.3–7.9 cm
+    Sepal Length: 4.3–7.9 cm
   
-  Sepal Width: 2.0–4.4 cm
+    Sepal Width: 2.0–4.4 cm
   
-  Petal Length: 1.0–6.9 cm
+    Petal Length: 1.0–6.9 cm
   
-  Petal Width: 0.1–2.5 cm
+    Petal Width: 0.1–2.5 cm
 
 Directory Structure
 
@@ -53,6 +53,7 @@ Assignment 6/
 
 └── train_model.py
 
+
 train_model.py: Trains and saves the KNN model.
 
 app.py: Flask app serving the HTML interface.
@@ -64,6 +65,7 @@ Dockerfile: Builds the Docker image.
 requirements.txt: Lists dependencies.
 
 deployment.yaml & service.yaml: Kubernetes manifests.
+
 
 Prerequisites
 
@@ -77,6 +79,7 @@ kubectl: Kubernetes CLI.
 
 PowerShell: For running commands on Windows 11.
 
+
 Train the Model
 
 Ensure iris.data is in the project root (download from UCI Iris Dataset).
@@ -87,79 +90,84 @@ python train_model.py
 
 This generates app/model/iris_knn_model.pkl.
 
+
 Install Dependencies
 
-  cd app
+    cd app
   
-  pip install -r requirements.txt
+    pip install -r requirements.txt
+    
 
 Test Locally
 
-  python app.py
+    python app.py
 
 Open http://localhost:5000 in a browser, enter values (e.g., 5.1, 3.5, 1.4, 0.2), and verify the prediction (e.g., “Iris-setosa”).
+
 
 Docker Instructions
 
 Build the Docker Image
 
-  cd D:\Masters Of Data Science\ANA 680\Module 4\Assignment 6\app
+    cd D:\Masters Of Data Science\ANA 680\Module 4\Assignment 6\app
   
-  docker build -t iris-knn-app:latest .
+    docker build -t iris-knn-app:latest .
 
 Run the Container
 
-  docker run -p 5000:5000 iris-knn-app:latest
+    docker run -p 5000:5000 iris-knn-app:latest
 
 Access http://localhost:5000 to use the HTML interface.
 
 Verify Container Contents
 
-  docker run -it iris-knn-app:latest /bin/bash
+    docker run -it iris-knn-app:latest /bin/bash
   
-  ls -R
+    ls -R
 
 Expected:
 
-  .: app.py  model  requirements.txt  templates
+    .: app.py  model  requirements.txt  templates
 
-  ./model: iris_knn_model.pkl
+    ./model: iris_knn_model.pkl
 
-  ./templates: index.html
+    ./templates: index.html
+
 
 Kubernetes Deployment with Minikube
 
 Start Minikube
 
-  minikube start --driver=docker
+    minikube start --driver=docker
 
 Build Image for Minikube
 
-  & minikube docker-env | Invoke-Expression
+    & minikube docker-env | Invoke-Expression
   
-  docker build -t iris-knn-app:latest .
+    docker build -t iris-knn-app:latest .
 
 Apply Kubernetes Manifests
 
-  cd D:\Masters Of Data Science\ANA 680\Module 4\Assignment 6\app
+    cd D:\Masters Of Data Science\ANA 680\Module 4\Assignment 6\app
   
-  kubectl apply -f deployment.yaml
+    kubectl apply -f deployment.yaml
   
-  kubectl apply -f service.yaml
+    kubectl apply -f service.yaml
 
 Verify Deployment
 
-  kubectl get pods
+    kubectl get pods
   
-  kubectl get services
+    kubectl get services
 
 Get the URL
 
-  minikube service iris-knn-service --url
+    minikube service iris-knn-service --url
   
-  http://127.0.0.1:56645
+    http://127.0.0.1:56645
 
 Open the URL in a browser to access the HTML interface.
+
 
 Usage
 
@@ -171,6 +179,7 @@ Submit to see the prediction (e.g., “Prediction: Iris-setosa”).
 
 The interface validates inputs to ensure they are numbers with 1–2 decimal places within the specified ranges.
 
+
 Evidence of Completion
 
 Model Training: train_model.py output showing 1.0 accuracy.
@@ -180,6 +189,7 @@ Docker: Successful build and browser screenshot at http://localhost:5000.
 Kubernetes: Minikube start output, kubectl get pods/services, and browser screenshot at the Minikube URL.
 
 Code: All files are included in this repository.
+
 
 Acknowledgments
 
