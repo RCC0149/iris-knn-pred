@@ -46,11 +46,11 @@ Assignment 6/
 
 │   ├── Dockerfile
 
-│   └── requirements.txt
+│   ├── deployment.yaml
 
-├── deployment.yaml
+│   ├── service.yaml
 
-├── service.yaml
+│   ├── requirements.txt
 
 ├── data
 
