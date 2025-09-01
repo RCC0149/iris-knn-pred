@@ -5,13 +5,15 @@ Overview
 This project implements a K-Nearest Neighbors (KNN) classifier for the Iris dataset, achieving 1.0 accuracy on a 70/30 train-test split. The model is served via a Flask web application with an HTML interface, allowing users to input Iris features (sepal length, sepal width, petal length, petal width) and receive predictions. The app is containerized using Docker and deployed locally to a Kubernetes cluster using Minikube. The project was developed in PowerShell on Windows 11 as part of ANA 680 Module 4 Assignment 6.
 Features
 
-KNN Model: Trained on the Iris dataset (70% training, 30% testing) with k=3, achieving 1.0 accuracy.
+-    KNN Model: Trained on the Iris dataset (70% training, 30% testing) with k=3, achieving 1.0 accuracy.
 
-Flask App: A web interface (index.html) for inputting features and displaying predictions.
+-    Flask App: A web interface (index.html) for inputting features and displaying predictions.
 
-Docker: Containerized app with Python 3.12, Flask, and dependencies.
+-    Docker: Containerized app with Python 3.12, Flask, and dependencies.
 
-Kubernetes: Deployed locally using Minikube with a LoadBalancer service.
+-    Kubernetes: Deployed locally using Minikube with a LoadBalancer service.
+
+----------------------------
 
 HTML Interface: Allows typing numerical inputs (1–2 decimal places) with range validation for Iris dataset features:
 
@@ -23,7 +25,10 @@ HTML Interface: Allows typing numerical inputs (1–2 decimal places) with range
   
     Petal Width: 0.1–2.5 cm
 
+----------------------------
+
 Directory Structure
+
 
 Assignment 6/
 
@@ -53,32 +58,38 @@ Assignment 6/
 
 └── train_model.py
 
+----------------------------
 
-train_model.py: Trains and saves the KNN model.
+File Designations
 
-app.py: Flask app serving the HTML interface.
 
-index.html: Web interface for predictions.
+    train_model.py: Trains and saves the KNN model.
 
-Dockerfile: Builds the Docker image.
+    app.py: Flask app serving the HTML interface.
 
-requirements.txt: Lists dependencies.
+    index.html: Web interface for predictions.
 
-deployment.yaml & service.yaml: Kubernetes manifests.
+    Dockerfile: Builds the Docker image.
 
+    requirements.txt: Lists dependencies.
+
+    deployment.yaml & service.yaml: Kubernetes manifests.
+
+----------------------------
 
 Prerequisites
 
-Python 3.12: For training and running the Flask app.
+    Python 3.12: For training and running the Flask app.
+    
+    Docker Desktop: For containerization.
 
-Docker Desktop: For containerization.
+    Minikube: For local Kubernetes deployment (v1.36.0 used).
 
-Minikube: For local Kubernetes deployment (v1.36.0 used).
+    kubectl: Kubernetes CLI.
 
-kubectl: Kubernetes CLI.
+    PowerShell: For running commands on Windows 11.
 
-PowerShell: For running commands on Windows 11.
-
+----------------------------
 
 Train the Model
 
@@ -90,6 +101,7 @@ python train_model.py
 
 This generates app/model/iris_knn_model.pkl.
 
+----------------------------
 
 Install Dependencies
 
@@ -97,6 +109,7 @@ Install Dependencies
   
     pip install -r requirements.txt
     
+----------------------------
 
 Test Locally
 
@@ -104,8 +117,10 @@ Test Locally
 
 Open http://localhost:5000 in a browser, enter values (e.g., 5.1, 3.5, 1.4, 0.2), and verify the prediction (e.g., “Iris-setosa”).
 
+----------------------------
 
 Docker Instructions
+
 
 Build the Docker Image
 
@@ -133,8 +148,10 @@ Expected:
 
     ./templates: index.html
 
+----------------------------
 
 Kubernetes Deployment with Minikube
+
 
 Start Minikube
 
@@ -168,8 +185,10 @@ Get the URL
 
 Open the URL in a browser to access the HTML interface.
 
+----------------------------
 
 Usage
+
 
 Navigate to http://localhost:5000 (Docker) or the Minikube URL (Kubernetes).
 
@@ -179,8 +198,10 @@ Submit to see the prediction (e.g., “Prediction: Iris-setosa”).
 
 The interface validates inputs to ensure they are numbers with 1–2 decimal places within the specified ranges.
 
+----------------------------
 
 Evidence of Completion
+
 
 Model Training: train_model.py output showing 1.0 accuracy.
 
@@ -190,8 +211,10 @@ Kubernetes: Minikube start output, kubectl get pods/services, and browser screen
 
 Code: All files are included in this repository.
 
+----------------------------
 
 Acknowledgments
+
 
 Randall C. Crawford
 
