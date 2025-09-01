@@ -10,25 +10,67 @@ Docker: Containerized app with Python 3.12, Flask, and dependencies.
 Kubernetes: Deployed locally using Minikube with a LoadBalancer service.
 
 HTML Interface: Allows typing numerical inputs (1–2 decimal places) with range validation for Iris dataset features:
+
   Sepal Length: 4.3–7.9 cm
+  
   Sepal Width: 2.0–4.4 cm
+  
   Petal Length: 1.0–6.9 cm
+  
   Petal Width: 0.1–2.5 cm
 
 Directory Structure
+
 Assignment 6/
+
 ├── app/
+
+│ 
+
 │   ├── model/
+
+│ 
+
 │   │   └── iris_knn_model.pkl
+
+│ 
+
 │   ├── templates/
+
+│ 
+
 │   │   └── index.html
+
+│ 
+
 │   ├── app.py
+
+│ 
+
 │   ├── Dockerfile
+
+│ 
+
 │   └── requirements.txt
+
+│ 
+
 ├── deployment.yaml
+
+│ 
+
 ├── service.yaml
+
+│ 
+
 ├── data
+
+│ 
+
     └── iris.data
+    
+│     
+
 └── train_model.py
 
 train_model.py: Trains and saves the KNN model.
