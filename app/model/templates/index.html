@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris KNN Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input:invalid {
+            border: 2px solid red;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result, .error {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .note {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+    <script>
+        function validateInput(input, min, max) {
+            const value = parseFloat(input.value);
+            if (value < min || value > max) {
+                input.setCustomValidity(`Value must be between ${min} and ${max}`);
+            } else {
+                input.setCustomValidity('');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Iris KNN Classifier</h1>
+    <form method="POST" onsubmit="return this.checkValidity()">
+        <div class="input-group">
+            <label for="sepal_length">Sepal Length (cm)</label>
+            <input type="text" name="sepal_length" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="e.g., 5.1" required oninput="validateInput(this, 4.3, 7.9)">
+            <span class="note">Range: 4.3–7.9 cm, 1–2 decimal places</span>
+        </div>
+        <div class="input-group">
+            <label for="sepal_width">Sepal Width (cm)</label>
+            <input type="text" name="sepal_width" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="e.g., 3.5" required oninput="validateInput(this, 2.0, 4.4)">
+            <span class="note">Range: 2.0–4.4 cm, 1–2 decimal places</span>
+        </div>
+        <div class="input-group">
+            <label for="petal_length">Petal Length (cm)</label>
+            <input type="text" name="petal_length" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="e.g., 1.4" required oninput="validateInput(this, 1.0, 6.9)">
+            <span class="note">Range: 1.0–6.9 cm, 1–2 decimal places</span>
+        </div>
+        <div class="input-group">
+            <label for="petal_width">Petal Width (cm)</label>
+            <input type="text" name="petal_width" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="e.g., 0.2" required oninput="validateInput(this, 0.1, 2.5)">
+            <span class="note">Range: 0.1–2.5 cm, 1–2 decimal places</span>
+        </div>
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction %}
+        <div class="result">Prediction: {{ prediction }}</div>
+    {% endif %}
+    {% if error %}
+        <div class="error">Error: {{ error }}</div>
+    {% endif %}
+</body>
+</html>
