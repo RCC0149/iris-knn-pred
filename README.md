@@ -1,12 +1,16 @@
 Iris KNN Classifier with Flask, Docker, and Kubernetes
 
 Overview
+
 This project implements a K-Nearest Neighbors (KNN) classifier for the Iris dataset, achieving 1.0 accuracy on a 70/30 train-test split. The model is served via a Flask web application with an HTML interface, allowing users to input Iris features (sepal length, sepal width, petal length, petal width) and receive predictions. The app is containerized using Docker and deployed locally to a Kubernetes cluster using Minikube. The project was developed in PowerShell on Windows 11 as part of ANA 680 Module 4 Assignment 6.
 Features
 
 KNN Model: Trained on the Iris dataset (70% training, 30% testing) with k=3, achieving 1.0 accuracy.
+
 Flask App: A web interface (index.html) for inputting features and displaying predictions.
+
 Docker: Containerized app with Python 3.12, Flask, and dependencies.
+
 Kubernetes: Deployed locally using Minikube with a LoadBalancer service.
 
 HTML Interface: Allows typing numerical inputs (1–2 decimal places) with range validation for Iris dataset features:
